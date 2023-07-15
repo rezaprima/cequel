@@ -12,7 +12,7 @@ group :development do
 end
 
 gem 'racc', '~> 1.4', :platforms => :rbx
-gem 'rubysl', '~> 2.0', :platforms => :rbx
+# gem 'rubysl', :platforms => [:rbx,:mri_19, :mri_20, :mri_21]
 gem 'psych', '~> 2.0', :platforms => :rbx
 
 gem "sorted_set", "~> 1.0"
