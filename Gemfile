@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :debug do
-  gem 'byebug', '~> 2.7'
+  gem 'byebug'
   gem 'pry', '~> 0.9'
 end
 
