@@ -27,11 +27,16 @@ describe 'serialization' do
 
   it 'should provide JSON serialization' do
     json = post.as_json.symbolize_keys
-    expect(json).to eq(attributes.merge(body: nil))
+    expect(json.keys).to eq([:blog_subdomain, :title, :body, :id])
+    expect(json[:body]).to be_nil
+    expect(json[:id].has_key?('n')).to be true
+    expect(Cassandra::TimeUuid.new(json[:id]['n']).to_time).to eq(post.id.to_time)
   end
 
   it 'should be able to serialize restricting to some attributes' do
     json = post.as_json(only: [:id]).symbolize_keys
-    expect(json).to eq(id: attributes[:id])
+    expect(json[:id].has_key?('n')).to be true
+    expect(json[:id].has_key?('n')).to be true
+    expect(Cassandra::TimeUuid.new(json[:id]['n']).to_time).to eq(post.id.to_time)
   end
 end
